@@ -209,18 +209,18 @@ http {
     }
 
     # ==== HTTPS 443 server ====
-    server {
-        listen 443 ssl http2;
-        ssl_protocols TLSv1.2 TLSv1.3;
-        ssl_prefer_server_ciphers on;
-        ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384;
-        ssl_session_cache shared:SSL:10m;
-        ssl_session_timeout 1d;
-        ssl_session_tickets on;
-        ssl_stapling on;
-        ssl_stapling_verify on;
-        resolver 8.8.8.8 1.1.1.1 valid=300s;
-    }
+    #server {
+    #    listen 443 ssl http2;
+    #    ssl_protocols TLSv1.2 TLSv1.3;
+    #    ssl_prefer_server_ciphers on;
+    #   ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384;
+    #    ssl_session_cache shared:SSL:10m;
+    #   ssl_session_timeout 1d;
+    #   ssl_session_tickets on;
+    #   ssl_stapling on;
+    #   ssl_stapling_verify on;
+    #   resolver 8.8.8.8 1.1.1.1 valid=300s;
+   # }
 
     # 包含虚拟主机配置
     include conf/conf.d/*.conf;
