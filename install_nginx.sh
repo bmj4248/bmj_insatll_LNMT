@@ -122,7 +122,7 @@ echo "=== 5. 编译配置 ==="
     --with-http_slice_module \
     --with-compat \
     --with-file-aio \
-    --with-threads
+    --with-threads \
     --add-module=/data/soft/redis2-nginx-module
 
 # --- 6. 编译安装 ---
@@ -153,7 +153,6 @@ cat > ${conf_file} << 'EOFCONF'
 user nginx nginx;
 worker_processes auto;
 worker_cpu_affinity auto;  # 自动绑定工作进程到不同CPU核心，减少上下文切换（Nginx1.9.10+支持）
-worker_connections 65535; # 每个工作进程最大并发连接数（默认1024）
 worker_rlimit_nofile 100000; # 突破系统文件描述符限制（需配合 `ulimit -n 100000`）
 error_log logs/error.log warn;
 pid run/nginx.pid;
@@ -161,6 +160,7 @@ pid run/nginx.pid;
 events {
     use epoll; # 启用epoll事件模型（Linux最优，支持百万级并发）
     multi_accept on; # 工作进程一次接受所有新连接，减少accept()调用开销
+    worker_connections 65535; # 每个工作进程最大并发连接数（默认1024）
     accept_mutex on; # 启用连接互斥锁，避免惊群效应（Nginx 1.11.3+默认on）
     accept_mutex_delay 500ms; # 互斥锁等待时间
 }
