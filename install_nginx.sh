@@ -123,6 +123,7 @@ echo "=== 5. 编译配置 ==="
     --with-compat \
     --with-file-aio \
     --with-threads
+    --add-module=/data/soft/redis2-nginx-module
 
 # --- 6. 编译安装 ---
 echo "=== 6. 编译安装 ==="
