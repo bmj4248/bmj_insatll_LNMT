@@ -159,8 +159,8 @@ pid run/nginx.pid;
 
 events {
     use epoll; # 启用epoll事件模型（Linux最优，支持百万级并发）
-    multi_accept on; # 工作进程一次接受所有新连接，减少accept()调用开销
     worker_connections 65535; # 每个工作进程最大并发连接数（默认1024）
+    multi_accept on; # 工作进程一次接受所有新连接，减少accept()调用开销
     accept_mutex on; # 启用连接互斥锁，避免惊群效应（Nginx 1.11.3+默认on）
     accept_mutex_delay 500ms; # 互斥锁等待时间
 }
