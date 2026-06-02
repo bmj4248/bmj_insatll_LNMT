@@ -227,18 +227,18 @@ http {
 }
 
 # ==== Stream 四层代理 ====
-stream {
-    server {
-        listen 3306;
-        proxy_pass 127.0.0.1:3306;
-    }
+#stream {
+#    server {
+#        listen 3306;
+#        proxy_pass 127.0.0.1:3306;
+#    }
     
-    server {
-        listen 6379;
-        proxy_pass 127.0.0.1:6379;
-    }
-}
-EOFCONF
+#    server {
+#        listen 6379;
+#        proxy_pass 127.0.0.1:6379;
+#    }
+#}
+#EOFCONF
 
 # --- 10. 生成默认虚拟主机配置 ---
 echo "=== 10. 生成默认虚拟主机 ==="
