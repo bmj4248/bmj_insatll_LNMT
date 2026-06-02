@@ -126,6 +126,7 @@ events {
 
 http {
     include mime.types;
+    include /data/soft/nginx/conf/conf.d/*.conf;
     default_type application/octet-stream;
 
     # 日志格式
